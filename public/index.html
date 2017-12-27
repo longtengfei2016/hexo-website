@@ -176,22 +176,52 @@
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
+        <li class="menu-item menu-item-首页">
           <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            首页
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-目录">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            目录
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
           <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            归档
           </a>
         </li>
       
@@ -401,6 +431,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/建站/" itemprop="url" rel="index">
+                    <span itemprop="name">建站</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -439,33 +491,14 @@
 
       
         
-          
-            <h2 id="一-准备"><a href="#一-准备" class="headerlink" title="一.准备"></a>一.准备</h2><p>1.阿里云服务器<br>2.github账号</p>
-<h2 id="二-安装环境"><a href="#二-安装环境" class="headerlink" title="二.安装环境"></a>二.安装环境</h2><p>1.gcc<br>安装nginx需要先将官网下载的源码进行编译，编译依赖gcc环境，如果没有gcc环境，需要安装gcc：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc-c++</span><br></pre></td></tr></table></figure></p>
-<p>2.pcre<br>PCRE(Perl Compatible Regular Expressions)是一个Perl库，包括 perl 兼容的正则表达式库。nginx的http模块使用pcre来解析正则表达式，所以需要在linux上安装pcre库。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y pcre pcre-devel</span><br></pre></td></tr></table></figure></p>
-<p>3.zlib<br>zlib库提供了很多种压缩和解压缩的方式，nginx使用zlib对http包的内容进行gzip，所以需要在linux上安装zlib库。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y zlib zlib-devel</span><br></pre></td></tr></table></figure></p>
-<p>4.openssl<br>OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。<br>nginx不仅支持http协议，还支持https（即在ssl协议上传输http），所以需要在linux安装openssl库。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y openssl openssl-devel</span><br></pre></td></tr></table></figure></p>
-<p>5.下载Nginx:</p>
-<p>Nginx源代码包可以从官方网站下载<a href="http://nginx.org/en/download.html，目前最新稳定版本为1.10.1，还有开发版本可供选择。相关命令如下：" target="_blank" rel="noopener">http://nginx.org/en/download.html，目前最新稳定版本为1.10.1，还有开发版本可供选择。相关命令如下：</a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https:<span class="comment">//nginx.org/download/nginx-1.10.1.tar.gz</span></span><br><span class="line">tar zxf nginx<span class="number">-1.10</span><span class="number">.1</span>.tar.gz</span><br><span class="line">cd nginx<span class="number">-1.10</span><span class="number">.1</span>/</span><br></pre></td></tr></table></figure></p>
-<p>6.安装Nginx：</p>
-<p>在安装之前需要进行配置，这也是linux下安装软件的常见步骤。初次安装可以直接使用configure脚本，如果有需要可以设置开关选项开启需要的功能模块，这里就不展开了。相关命令如下：</p>
-<p>./configure<br>make<br>make install</p>
-<p>这里根据网上的一些方法做了配置，但是make编译还是报错，所以直接执行./configure –prefix=/root/nginx-1.10.1 –conf-path=/root/nginx-1.10.1/nginx.conf 再编译成功。<br>到sbin目录下运行nginx<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># cd nginx-1.10.1/sbin</span><br><span class="line"># ./nginx</span><br></pre></td></tr></table></figure></p>
-<p>7.安装hexo以及相关插件</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># npm install -g hexo</span><br><span class="line"># npm install -g hexo-cli</span><br><span class="line">#npm install hexo-deployer-git --save</span><br><span class="line">#npm install hexo-server --save</span><br></pre></td></tr></table></figure>
-<p>hexo的用法请参照官网：<a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">https://hexo.io/docs/writing.html</a></p>
-<h2 id="三-部署到服务器"><a href="#三-部署到服务器" class="headerlink" title="三.部署到服务器"></a>三.部署到服务器</h2><p>1.初始化 Git 仓库</p>
-<p>可以将git仓库放到自定义位置，我是将其放在 /home/web/blog.git 目录下的<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># cd /home/web</span><br><span class="line"># git init --bare blog.git</span><br></pre></td></tr></table></figure></p>
-<p>2.配置 git hooks</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># cd /home/web/blog.git/hooks</span><br><span class="line"># vim post-receive</span><br></pre></td></tr></table></figure>
-<p>写入git –work-tree=/home/web/hexo –git-dir=/home/web/blog.git checkout -f 保存退出（/home/web/hexo是从github上clone下来的hexo代码根目录）</p>
-<p>设置这个文件的可执行权限<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># chmod +x post-receive</span><br></pre></td></tr></table></figure></p>
-<p>3.配置 hexo 的 deploy</p>
-<p>修改 hexo 目录下的 _config.yml 找到 deploy, 修改为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@SEVER:<span class="regexp">/home/</span>web/blog.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
-<h2 id="四-使用"><a href="#四-使用" class="headerlink" title="四.使用"></a>四.使用</h2><p>新建文章：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># hexo new "hello world"</span><br></pre></td></tr></table></figure></p>
-<p>生成 &amp; 部署：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure></p>
-
-          
+          <h2 id="一-准备"><a href="#一-准备" class="headerlink" title="一.准备"></a>一.准备</h2><p>1.阿里云服务器<br>2.github账号</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/27/hexo部署到阿里云服务器/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -547,7 +580,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives">
               
                   <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">Artikel</span>
@@ -555,6 +588,15 @@
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">Kategorien</span>
+                
+              </div>
             
 
             
@@ -579,6 +621,18 @@
                   <a href="https://github.com/longtengfei2016" target="_blank" title="GitHub">
                     
                       <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.cnblogs.com/longtengfly/" target="_blank" title="博客园">
+                    
+                      <i class="fa fa-fw fa-globe"></i>博客园</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://segmentfault.com/u/xiaofengge" target="_blank" title="SegementFault">
+                    
+                      <i class="fa fa-fw fa-globe"></i>SegementFault</a>
                 </span>
               
             
@@ -613,23 +667,19 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Tiger.long</span>
+  <span class="author" itemprop="copyrightHolder">Copyright longtengfly. 粤ICP备 17157403号 个人网站</span>
 
   
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
-  <span class="post-meta-divider">|</span>
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
-
-
+  <div class="footer-custom">Hosted by <a target="_blank" href="https://pages.github.com">GitHub Pages</a></div>
 
 
         

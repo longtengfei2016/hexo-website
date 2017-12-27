@@ -2,13 +2,15 @@
 title: hexo部署到阿里云服务器
 date: 2017-12-27 11:32:01
 tags: hexo
+categories: 建站
+comments: ture
 ---
 ## 一.准备
 
 1.阿里云服务器
 2.github账号
 
-## 二.安装环境
+<!-- more -->## 二.安装环境
 
 1.gcc 
 安装nginx需要先将官网下载的源码进行编译，编译依赖gcc环境，如果没有gcc环境，需要安装gcc：
