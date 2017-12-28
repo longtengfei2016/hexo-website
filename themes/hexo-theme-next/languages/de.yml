@@ -15,19 +15,19 @@ menu:
   search: Suche
 
 sidebar:
-  overview: Übersicht
-  toc: Inhaltsverzeichnis
+  overview: 个人栏
+  toc: 目录
 
 post:
   created: Post created
   sticky: Sticky
-  posted: Veröffentlicht am
-  modified: Updated at
-  in: in
-  read_more: Weiterlesen
+  posted: 发表于
+  modified: 更新
+  in: 分类
+  read_more: 更多
   untitled: Unbenannt
   toc_empty: Dieser Artikel hat kein Inhaltsverzeichnis
-  visitors: Visitors
+  visitors: 浏览量
   wordcount: Words count in article
   min2read: Reading time
   totalcount: Site words total count
@@ -63,10 +63,10 @@ counter:
     other: "Insgesamt %d Artikel."
 
 state:
-  posts: Artikel
+  posts: 文章
   pages: Seiten
-  tags: Tags
-  categories: Kategorien
+  tags: 标签
+  categories: 类目
 
 cheers:
   um: Öhm..

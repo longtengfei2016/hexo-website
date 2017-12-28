@@ -86,8 +86,8 @@ index_with_subtitle: false
 menu:
   首页: / || home
   关于: /about/ || user
-  标签: /tags/ || tags
-  目录: /categories/ || th
+  # 标签: /tags/ || tags
+  # 目录: /categories/ || th
   归档: /archives/ || archive
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
@@ -377,10 +377,10 @@ valine:
   enable: true
   appid:  LeCCA66dGbzxtMavj7NlVbse-gzGzoHsz
   appkey:  CYkvXYm3VIVgVQFdr17i3z0u
-  notify: false # mail notifier , https://github.com/xCss/Valine/wiki
-  verify: false # Verification code
-  placeholder: Just go go # comment box placeholder
-  avatar: mm # gravatar style
+  notify: true # mail notifier , https://github.com/xCss/Valine/wiki
+  verify: true # Verification code
+  placeholder: 输入昵称、邮箱和网站能让我更好的关注您😊 # comment box placeholder
+  avatar: retro # gravatar style
   guest_info: nick,mail,link # custom comment header
   pageSize: 10 # pagination size
 

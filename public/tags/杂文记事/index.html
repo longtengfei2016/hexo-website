@@ -195,26 +195,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-标签">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-目录">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            目录
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-归档">
           <a href="/archives/" rel="section">
             
@@ -262,7 +242,7 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2017/12/26/hello-world/" itemprop="url">
+            <a class="post-title-link" href="/2017/12/27/hello-world/" itemprop="url">
               
                 <span itemprop="name">第一篇帖子</span>
               
@@ -272,9 +252,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-26T23:01:01+08:00"
-              content="2017-12-26" >
-          12-26
+              datetime="2017-12-27T13:10:56+08:00"
+              content="2017-12-27" >
+          12-27
         </time>
       </div>
 
@@ -339,7 +319,7 @@
                 <a href="/archives">
               
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">文章</span>
                 </a>
               </div>
             
@@ -350,7 +330,7 @@
               <div class="site-state-item site-state-categories">
                 
                   <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">Kategorien</span>
+                  <span class="site-state-item-name">类目</span>
                 
               </div>
             
@@ -361,7 +341,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">Tags</span>
+                  <span class="site-state-item-name">标签</span>
                 
               </div>
             
@@ -621,12 +601,12 @@
     });
     new Valine({
         el: '#comments' ,
-        verify: false,
-        notify: false,
+        verify: true,
+        notify: true,
         appId: 'LeCCA66dGbzxtMavj7NlVbse-gzGzoHsz',
         appKey: 'CYkvXYm3VIVgVQFdr17i3z0u',
-        placeholder: 'Just go go',
-        avatar:'mm',
+        placeholder: '输入昵称、邮箱和网站能让我更好的关注您😊',
+        avatar:'retro',
         guest_info:guest,
         pageSize:'10' || 10,
     });
