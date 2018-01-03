@@ -1,7 +1,7 @@
 ---
 title: 用node实现一个简单的滑块拖动验证（极验验证）
 date: 2018-01-02 18:22:50
-tags: demo
+tags: node
 comments: true
 ---
 ## 一.准备
@@ -107,6 +107,7 @@ function init(data){
 }
 ```
 在server.js 目录下运行node server.js就OK了，点击就可以验证
+![](geetest.png)
 
 是不是非常的简单？？
 
