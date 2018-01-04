@@ -1,8 +1,6 @@
 {% if theme.leancloud_visitors.enable %}
 
   {# custom analytics part create by xiamo #}
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("{{theme.leancloud_visitors.app_id}}", "{{theme.leancloud_visitors.app_key}}");</script>
   <script>
     function showTime(Counter) {
       var query = new AV.Query(Counter);
@@ -15,7 +13,7 @@
 
       query.containedIn('url', entries);
       query.find()
-        .done(function (results) {
+        .then(function (results) {
           var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
 
           if (results.length === 0) {
@@ -39,8 +37,7 @@
               countSpan.text(0);
             }
           }
-        })
-        .fail(function (object, error) {
+        },function (object, error) {
           console.log("Error: " + error.code + " " + error.message);
         });
     }
@@ -52,20 +49,17 @@
       var query = new AV.Query(Counter);
 
       query.equalTo("url", url);
-      query.find({
-        success: function(results) {
+      query.find().then(
+        function(results) {
           if (results.length > 0) {
             var counter = results[0];
             counter.fetchWhenSave(true);
             counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
+            counter.save().then(function(counter) {
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.get('time'));
+            },function(counter, error) {
+              console.log('Failed to save Visitor num, with error message: ' + error.message);
             });
           } else {
             var newcounter = new Counter();
@@ -89,10 +83,10 @@
             });
           }
         },
-        error: function(error) {
+        function(error) {
           console.log('Error:' + error.code + " " + error.message);
         }
-      });
+      );
     }
 
     $(function() {
