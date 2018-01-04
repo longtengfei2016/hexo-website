@@ -1,6 +1,8 @@
 {% if theme.leancloud_visitors.enable %}
 
   {# custom analytics part create by xiamo #}
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("{{theme.leancloud_visitors.app_id}}", "{{theme.leancloud_visitors.app_key}}");</script>
   <script>
     function showTime(Counter) {
       var query = new AV.Query(Counter);
@@ -11,8 +13,9 @@
         entries.push( $(this).attr("id").trim() );
       });
 
+      query.containedIn('url', entries);
       query.find()
-        .then(function (results) {
+        .done(function (results) {
           var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
 
           if (results.length === 0) {
@@ -36,7 +39,8 @@
               countSpan.text(0);
             }
           }
-        },function (object, error) {
+        })
+        .fail(function (object, error) {
           console.log("Error: " + error.code + " " + error.message);
         });
     }
@@ -48,17 +52,20 @@
       var query = new AV.Query(Counter);
 
       query.equalTo("url", url);
-      query.find().then(
-        function(results) {
+      query.find({
+        success: function(results) {
           if (results.length > 0) {
             var counter = results[0];
             counter.fetchWhenSave(true);
             counter.increment("time");
-            counter.save().then(function(counter) {
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text(counter.get('time'));
-            },function(counter, error) {
-              console.log('Failed to save Visitor num, with error message: ' + error.message);
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
             });
           } else {
             var newcounter = new Counter();
@@ -82,10 +89,10 @@
             });
           }
         },
-        function(error) {
+        error: function(error) {
           console.log('Error:' + error.code + " " + error.message);
         }
-      );
+      });
     }
 
     $(function() {
