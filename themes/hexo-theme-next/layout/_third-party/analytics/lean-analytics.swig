@@ -11,7 +11,6 @@
         entries.push( $(this).attr("id").trim() );
       });
 
-      query.containedIn('url', entries);
       query.find()
         .then(function (results) {
           var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
